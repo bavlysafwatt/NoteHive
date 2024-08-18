@@ -41,7 +41,7 @@ class DialogBox extends StatelessWidget {
               ),
               SizedBox(height: 10),
               CustomTextField(
-                hintText: 'Note',
+                hintText: 'Content',
                 maxLines: 7,
               ),
               SizedBox(height: 10),
