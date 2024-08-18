@@ -12,7 +12,6 @@ class CustomAppBar extends StatelessWidget {
           'Notes',
           style: TextStyle(
             fontSize: 28,
-            fontFamily: 'Ubuntu',
             fontWeight: FontWeight.bold,
           ),
         ),
