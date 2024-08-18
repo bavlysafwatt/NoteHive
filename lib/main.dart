@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/pages/notes_page.dart';
 
 void main() {
   runApp(const NotesApp());
@@ -12,10 +13,9 @@ class NotesApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
-        useMaterial3: false,
+        brightness: Brightness.dark,
       ),
-      home: Scaffold(),
+      home: const NotesPage(),
     );
   }
 }
