@@ -77,7 +77,7 @@ flutter:
   fonts:
     - family: Ubuntu
       fonts:
-        - asset: fonts/Ubuntu-Medium.ttf
+        - asset: assets/fonts/Ubuntu-Medium.ttf
 
   #
   # For details regarding fonts from package dependencies,
