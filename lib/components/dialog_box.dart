@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/components/custom_button.dart';
-import 'package:notes_app/components/custom_text_field.dart';
+import 'package:notes_app/components/add_note_form.dart';
 
 class DialogBox extends StatelessWidget {
   const DialogBox({super.key});
@@ -23,31 +22,7 @@ class DialogBox extends StatelessWidget {
         ),
         child: const Padding(
           padding: EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Add new note!',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 10),
-              CustomTextField(
-                hintText: 'Title',
-                maxLines: 1,
-              ),
-              SizedBox(height: 10),
-              CustomTextField(
-                hintText: 'Content',
-                maxLines: 7,
-              ),
-              SizedBox(height: 10),
-              CustomButton(text: 'Add'),
-            ],
-          ),
+          child: AddNoteForm(),
         ),
       ),
     );
