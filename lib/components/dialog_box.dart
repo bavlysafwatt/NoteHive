@@ -23,25 +23,28 @@ class DialogBox extends StatelessWidget {
           color: Colors.black12,
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: BlocConsumer<AddNoteCubit, AddNoteState>(
-            listener: (context, state) {
-              if (state is AddNoteFailure) {
-                print('Failed ${state.erroeMessage}');
-              }
+        child: BlocConsumer<AddNoteCubit, AddNoteState>(
+          listener: (context, state) {
+            if (state is AddNoteFailure) {
+              print('Failed ${state.erroeMessage}');
+            }
 
-              if (state is AddNoteSuccess) {
-                Navigator.pop(context);
-              }
-            },
-            builder: (context, state) {
-              return ModalProgressHUD(
-                inAsyncCall: state is AddNoteLoading ? true : false,
-                child: const AddNoteForm(),
-              );
-            },
-          ),
+            if (state is AddNoteSuccess) {
+              Navigator.pop(context);
+            }
+          },
+          builder: (context, state) {
+            return ModalProgressHUD(
+              inAsyncCall: state is AddNoteLoading ? true : false,
+              progressIndicator:
+                  CircularProgressIndicator(color: Colors.grey.shade600),
+              color: Colors.grey.shade500,
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: AddNoteForm(),
+              ),
+            );
+          },
         ),
       ),
     );
