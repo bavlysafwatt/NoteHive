@@ -9,42 +9,45 @@ class DialogBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      elevation: 0,
-      contentPadding: EdgeInsets.zero,
-      shadowColor: Colors.transparent,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      content: Container(
-        height: 500,
-        width: 400,
-        decoration: BoxDecoration(
-          color: Colors.black12,
+    return BlocProvider(
+      create: (context) => AddNoteCubit(),
+      child: AlertDialog(
+        elevation: 0,
+        contentPadding: EdgeInsets.zero,
+        shadowColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        child: BlocConsumer<AddNoteCubit, AddNoteState>(
-          listener: (context, state) {
-            if (state is AddNoteFailure) {
-              print('Failed ${state.erroeMessage}');
-            }
+        content: Container(
+          height: 500,
+          width: 400,
+          decoration: BoxDecoration(
+            color: Colors.black12,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: BlocConsumer<AddNoteCubit, AddNoteState>(
+            listener: (context, state) {
+              if (state is AddNoteFailure) {
+                print('Failed ${state.erroeMessage}');
+              }
 
-            if (state is AddNoteSuccess) {
-              Navigator.pop(context);
-            }
-          },
-          builder: (context, state) {
-            return ModalProgressHUD(
-              inAsyncCall: state is AddNoteLoading ? true : false,
-              progressIndicator:
-                  CircularProgressIndicator(color: Colors.grey.shade600),
-              color: Colors.grey.shade500,
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: AddNoteForm(),
-              ),
-            );
-          },
+              if (state is AddNoteSuccess) {
+                Navigator.pop(context);
+              }
+            },
+            builder: (context, state) {
+              return ModalProgressHUD(
+                inAsyncCall: state is AddNoteLoading ? true : false,
+                progressIndicator:
+                    CircularProgressIndicator(color: Colors.grey.shade600),
+                color: Colors.grey.shade500,
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  child: AddNoteForm(),
+                ),
+              );
+            },
+          ),
         ),
       ),
     );
