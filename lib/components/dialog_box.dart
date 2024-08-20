@@ -19,7 +19,7 @@ class DialogBox extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         content: Container(
-          height: 500,
+          height: 550,
           width: 400,
           decoration: BoxDecoration(
             color: Colors.black12,

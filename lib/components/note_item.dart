@@ -41,7 +41,7 @@ class NoteItem extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               subtitle: Padding(
@@ -50,7 +50,7 @@ class NoteItem extends StatelessWidget {
                   noteModel.content,
                   style: TextStyle(
                     fontSize: 18,
-                    color: Colors.white.withOpacity(0.7),
+                    color: Colors.black.withOpacity(0.7),
                   ),
                 ),
               ),
@@ -61,7 +61,7 @@ class NoteItem extends StatelessWidget {
                 },
                 icon: Icon(
                   Icons.delete_rounded,
-                  color: Colors.grey.shade200,
+                  color: Colors.grey.shade900,
                   size: 30,
                 ),
               ),
@@ -72,7 +72,7 @@ class NoteItem extends StatelessWidget {
                 noteModel.date,
                 style: TextStyle(
                   fontSize: 14,
-                  color: Colors.grey.shade200,
+                  color: Colors.grey.shade900,
                 ),
               ),
             )
