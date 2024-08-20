@@ -4,6 +4,7 @@ import 'package:notes_app/components/custom_app_bar.dart';
 import 'package:notes_app/components/custom_text_field.dart';
 import 'package:notes_app/components/edit_note_colors_list.dart';
 import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
+import 'package:notes_app/helper.dart';
 import 'package:notes_app/models/note_model.dart';
 
 class EditNotePage extends StatefulWidget {
@@ -50,6 +51,7 @@ class _EditNotePageState extends State<EditNotePage> {
                       widget.noteModel.save();
                       BlocProvider.of<NotesCubit>(context).readAllNotes();
                       Navigator.pop(context);
+                      showSnackBar(context, 'Note edited successfully');
                     } else {
                       setState(() {
                         autovalidateMode = AutovalidateMode.always;
