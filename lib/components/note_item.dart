@@ -64,8 +64,8 @@ class NoteItem extends StatelessWidget {
               child: Text(
                 noteModel.date,
                 style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.grey.shade300,
+                  fontSize: 14,
+                  color: Colors.grey.shade200,
                 ),
               ),
             )
