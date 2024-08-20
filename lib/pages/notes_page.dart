@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes_app/components/custom_app_bar.dart';
 import 'package:notes_app/components/dialog_box.dart';
-import 'package:notes_app/components/notes_list.dart';
+import 'package:notes_app/components/notes_page_body.dart';
 import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 
 class NotesPage extends StatelessWidget {
@@ -14,18 +13,7 @@ class NotesPage extends StatelessWidget {
       create: (context) => NotesCubit(),
       child: SafeArea(
         child: Scaffold(
-          body: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
-            child: Column(
-              children: [
-                CustomAppBar(
-                  title: 'Notes',
-                  icon: Icons.search,
-                ),
-                NotesList(),
-              ],
-            ),
-          ),
+          body: const NotesPageBody(),
           floatingActionButton: FloatingActionButton(
             backgroundColor: Colors.grey.shade900,
             onPressed: () {
