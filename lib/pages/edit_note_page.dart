@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/components/custom_app_bar.dart';
 import 'package:notes_app/components/custom_text_field.dart';
+import 'package:notes_app/components/edit_note_colors_list.dart';
 import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 
@@ -65,9 +66,11 @@ class _EditNotePageState extends State<EditNotePage> {
                 const SizedBox(height: 15),
                 CustomTextField(
                   hintText: 'Content',
-                  maxLines: 22,
+                  maxLines: 21,
                   controller: content,
                 ),
+                const SizedBox(height: 20),
+                EditNoteColorsList(currentColor: widget.noteModel.color),
               ],
             ),
           ),
