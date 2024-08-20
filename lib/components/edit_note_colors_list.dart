@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/components/color_item.dart';
 import 'package:notes_app/constants.dart';
+import 'package:notes_app/models/note_model.dart';
 
 class EditNoteColorsList extends StatefulWidget {
-  const EditNoteColorsList({super.key, required this.currentColor});
+  const EditNoteColorsList({super.key, required this.noteModel});
 
-  final int currentColor;
+  final NoteModel noteModel;
 
   @override
   State<EditNoteColorsList> createState() => _EditNoteColorsListState();
@@ -14,7 +15,7 @@ class EditNoteColorsList extends StatefulWidget {
 class _EditNoteColorsListState extends State<EditNoteColorsList> {
   @override
   Widget build(BuildContext context) {
-    int currentIndex = kColorList.indexOf(widget.currentColor);
+    int currentIndex = kColorList.indexOf(widget.noteModel.color);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: kColorList.asMap().entries.map((entry) {
@@ -22,6 +23,7 @@ class _EditNoteColorsListState extends State<EditNoteColorsList> {
         int colorValue = entry.value;
         return GestureDetector(
           onTap: () {
+            widget.noteModel.color = kColorList[index];
             setState(() {
               currentIndex = index;
             });

@@ -70,7 +70,7 @@ class _EditNotePageState extends State<EditNotePage> {
                   controller: content,
                 ),
                 const SizedBox(height: 20),
-                EditNoteColorsList(currentColor: widget.noteModel.color),
+                EditNoteColorsList(noteModel: widget.noteModel),
               ],
             ),
           ),
