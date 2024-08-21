@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/app_bar_cubit/app_bar_cubit.dart';
 import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/helper.dart';
 import 'package:notes_app/models/note_model.dart';
@@ -58,6 +59,9 @@ class NoteItem extends StatelessWidget {
               trailing: IconButton(
                 onPressed: () {
                   noteModel.delete();
+                  FocusManager.instance.primaryFocus?.unfocus();
+                  BlocProvider.of<AppBarCubit>(context)
+                      .changeStateNotSearching();
                   BlocProvider.of<NotesCubit>(context).readAllNotes();
                   showSnackBar(context, 'Note deleted successfully');
                 },

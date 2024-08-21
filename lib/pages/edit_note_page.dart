@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/components/custom_app_bar.dart';
 import 'package:notes_app/components/custom_text_field.dart';
 import 'package:notes_app/components/edit_note_colors_list.dart';
+import 'package:notes_app/cubits/app_bar_cubit/app_bar_cubit.dart';
 import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/helper.dart';
 import 'package:notes_app/models/note_model.dart';
@@ -49,6 +50,9 @@ class _EditNotePageState extends State<EditNotePage> {
                       widget.noteModel.title = title.text;
                       widget.noteModel.content = content.text;
                       widget.noteModel.save();
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      BlocProvider.of<AppBarCubit>(context)
+                          .changeStateNotSearching();
                       BlocProvider.of<NotesCubit>(context).readAllNotes();
                       Navigator.pop(context);
                       showSnackBar(context, 'Note edited successfully');
