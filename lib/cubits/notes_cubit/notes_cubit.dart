@@ -12,9 +12,25 @@ class NotesCubit extends Cubit<NotesState> {
 
   List<NoteModel>? notesList;
 
-  readAllNotes() {
+  readAllNotes({String value = ''}) {
     var notesBox = Hive.box<NoteModel>('notesBox');
     notesList = notesBox.values.toList();
+    if (value.isNotEmpty && value != '') {
+      filterNotes(value: value);
+    }
     emit(NotesRefresh());
+  }
+
+  filterNotes({required String value}) {
+    List<NoteModel> filteredNotes = [];
+    if (notesList == null || notesList!.isEmpty) {
+      return;
+    }
+    for (int i = 0; i < notesList!.length; ++i) {
+      if (notesList![i].title.toLowerCase().contains(value.toLowerCase())) {
+        filteredNotes.add(notesList![i]);
+      }
+    }
+    notesList = filteredNotes;
   }
 }
